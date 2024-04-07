@@ -41,9 +41,9 @@ if __name__ == "__main__":
         print("Can't read application software identification. Please cycle ignition.")
         exit(1)
 
-    if data != b'\x018965B4209000\x00\x00\x00\x00':
-        print("Unexpected application version!", data)
-        exit(1)
+#    if data != b'\x018965B4209000\x00\x00\x00\x00':
+#        print("Unexpected application version!", data)
+#        exit(1)
 
     # Mandatory flow of diagnostic sessions
     uds_client.diagnostic_session_control(SESSION_TYPE.DEFAULT)
@@ -56,9 +56,9 @@ if __name__ == "__main__":
     data = uds_client.read_data_by_identifier(DATA_IDENTIFIER_TYPE.APPLICATION_SOFTWARE_IDENTIFICATION)
     print(" - APPLICATION_SOFTWARE_IDENTIFICATION (bootloader) ", data)
 
-    if data != b'\x01!!!!!!!!!!!!!!!!':
-        print("Unexpected bootloader version!", data)
-        exit(1)
+#    if data != b'\x01!!!!!!!!!!!!!!!!':
+#        print("Unexpected bootloader version!", data)
+#        exit(1)
 
     # Go back to programming session
     uds_client.diagnostic_session_control(SESSION_TYPE.PROGRAMMING)
